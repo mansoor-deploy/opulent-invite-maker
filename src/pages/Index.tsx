@@ -64,12 +64,12 @@ const Index = () => {
       </div>
       
       {/* Gallery Section */}
-      <div ref={galleryRef}>
+      <div ref={galleryRef} className="w-full">
         <Gallery />
       </div>
       
       {/* Event Details */}
-      <div id="details">
+      <div id="details" className="w-full">
         <EventDetails 
           date={eventDate}
           venue="The Golden Palace"
@@ -79,7 +79,7 @@ const Index = () => {
       </div>
       
       {/* RSVP Section */}
-      <div ref={rsvpRef}>
+      <div ref={rsvpRef} className="w-full">
         <RSVP />
       </div>
       

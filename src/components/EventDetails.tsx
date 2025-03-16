@@ -21,11 +21,11 @@ const EventDetails: React.FC<EventDetailsProps> = ({
 
   return (
     <section className="py-16 px-4 bg-gradient-to-b from-background to-purple-light/10">
-      <div className="container max-w-4xl mx-auto">
+      <div className="container max-w-5xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 gold-text">Event Details</h2>
 
         <div className="grid md:grid-cols-2 gap-8">
-          <div className="space-y-6">
+          <div className="space-y-6 px-2 sm:px-4">
             <div className="flex items-start gap-4 group">
               <div className="p-3 rounded-full bg-purple-light/10 group-hover:bg-purple-light/20 transition-colors">
                 <Calendar className="w-6 h-6 text-purple" />

@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { toast } from 'sonner';
 import { Crown } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const RSVP = () => {
   const [name, setName] = useState('');
@@ -14,6 +15,7 @@ const RSVP = () => {
   const [guests, setGuests] = useState('0');
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const isMobile = useIsMobile();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,16 +43,16 @@ const RSVP = () => {
 
   return (
     <section id="rsvp" className="py-16 px-4 bg-gradient-to-b from-purple-light/10 to-background">
-      <div className="container max-w-2xl mx-auto">
+      <div className="container max-w-3xl mx-auto">
         <div className="text-center mb-10">
           <Crown className="w-12 h-12 text-gold mx-auto mb-4" />
           <h2 className="text-3xl md:text-4xl font-bold gold-text mb-4">RSVP</h2>
-          <p className="text-gray-600 max-w-md mx-auto">
+          <p className="text-gray-600 max-w-lg mx-auto">
             Please let us know if you'll be joining the celebration by July 15th, 2024
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-lg shadow-lg gold-border">
+        <form onSubmit={handleSubmit} className={`space-y-6 bg-white ${isMobile ? 'p-5' : 'p-8'} rounded-lg shadow-lg gold-border`}>
           <div className="space-y-3">
             <Label htmlFor="name" className="text-gray-700">Your Name *</Label>
             <Input
