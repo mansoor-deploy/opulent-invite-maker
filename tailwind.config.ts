@@ -127,6 +127,14 @@ export default {
 						opacity: '1',
 						transform: 'translateY(0)'
 					}
+				},
+				'bounce': {
+					'0%, 100%': {
+						transform: 'translateY(0)'
+					},
+					'50%': {
+						transform: 'translateY(-10px)'
+					}
 				}
 			},
 			animation: {
@@ -135,7 +143,8 @@ export default {
 				'sparkle': 'sparkle 2s infinite',
 				'float': 'float 3s ease-in-out infinite',
 				'pulse-gold': 'pulse-gold 2s infinite',
-				'fade-in-up': 'fade-in-up 0.6s ease-out'
+				'fade-in-up': 'fade-in-up 0.6s ease-out',
+				'bounce': 'bounce 1.5s infinite ease-in-out'
 			},
 			backgroundImage: {
 				'gold-gradient': 'linear-gradient(90deg, #f5d485 0%, #d4af37 50%, #9e7e23 100%)',

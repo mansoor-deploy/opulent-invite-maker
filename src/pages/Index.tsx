@@ -1,23 +1,46 @@
 
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Hero from '@/components/Hero';
 import Countdown from '@/components/Countdown';
 import EventDetails from '@/components/EventDetails';
 import RSVP from '@/components/RSVP';
 import MusicPlayer from '@/components/MusicPlayer';
 import VideoInvite from '@/components/VideoInvite';
+import Gallery from '@/components/Gallery';
+import LoadingScreen from '@/components/LoadingScreen';
 
 const Index = () => {
+  // Loading state
+  const [isLoading, setIsLoading] = useState(true);
+  
   // Event date - set to a future date
   const eventDate = new Date();
   eventDate.setMonth(eventDate.getMonth() + 2); // 2 months from now
   eventDate.setHours(18, 0, 0, 0); // 6:00 PM
 
   const rsvpRef = useRef<HTMLDivElement>(null);
+  const galleryRef = useRef<HTMLDivElement>(null);
 
   const scrollToRSVP = () => {
     rsvpRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  const scrollToGallery = () => {
+    galleryRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    // Simulate page loading
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <LoadingScreen onLoadComplete={() => setIsLoading(false)} />;
+  }
 
   return (
     <div className="bg-background min-h-screen">
@@ -32,11 +55,17 @@ const Index = () => {
         name="Alexander" 
         age={50} 
         onRSVPClick={scrollToRSVP} 
+        onGalleryClick={scrollToGallery}
       />
       
       {/* Countdown Timer */}
       <div className="container mx-auto py-16">
         <Countdown targetDate={eventDate} />
+      </div>
+      
+      {/* Gallery Section */}
+      <div ref={galleryRef}>
+        <Gallery />
       </div>
       
       {/* Event Details */}

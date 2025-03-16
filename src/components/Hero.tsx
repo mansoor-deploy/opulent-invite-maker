@@ -7,9 +7,10 @@ interface HeroProps {
   name: string;
   age: number;
   onRSVPClick: () => void;
+  onGalleryClick?: () => void;
 }
 
-const Hero: React.FC<HeroProps> = ({ name, age, onRSVPClick }) => {
+const Hero: React.FC<HeroProps> = ({ name, age, onRSVPClick, onGalleryClick }) => {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -83,6 +84,15 @@ const Hero: React.FC<HeroProps> = ({ name, age, onRSVPClick }) => {
             >
               View Details
             </Button>
+            {onGalleryClick && (
+              <Button 
+                variant="outline" 
+                className="border-gold text-gold hover:bg-gold hover:text-white font-bold px-8 py-3 rounded-full"
+                onClick={onGalleryClick}
+              >
+                View Gallery
+              </Button>
+            )}
           </div>
         </div>
       </div>
